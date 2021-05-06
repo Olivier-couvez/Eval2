@@ -1,0 +1,23 @@
+﻿<Window x:Name="JeuDuDevin" x:Class="bindingDevin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:bindingDevin"
+        mc:Ignorable="d"
+        Title="Jeu du devin" Height="600" Width="500" FontFamily="Century Gothic" Background="#FFD4E3E4" Loaded="JeuDuDevin_Loaded">
+    <Grid Margin="0,0,0,0">
+        <Label x:Name="lblTitre" Content="Le nombre Mystère" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="#FF337FB4"/>
+        <Label x:Name="lblNbEssai" Content="Nb essais" HorizontalAlignment="Left" Margin="75,84,0,0" VerticalAlignment="Top" Foreground="#FF205199"/>
+        <Label x:Name="lblPlage" Content="Plage" HorizontalAlignment="Left" Margin="75,134,0,0" VerticalAlignment="Top" Foreground="#FF205199"/>
+        <Label x:Name="lblMessage" Content="Messages" HorizontalAlignment="Left" Margin="203,199,0,0" VerticalAlignment="Top" Foreground="#FF205199"/>
+        <Label x:Name="lblProposition" Content="Proposition" HorizontalAlignment="Left" Margin="203,292,0,0" VerticalAlignment="Top" Foreground="#FF205199"/>
+        <TextBox x:Name="txtbEssai" Text="{Binding Path=NbEssai, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="250,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23" Background="#FF2876E6" Foreground="#FFE89F55"/>
+        <TextBox x:Name="txtbPlage" Text="{Binding Path=Plage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="250,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23" Background="#FF2876E6" Foreground="#FFE89F55"/>
+        <TextBox x:Name="txtbMessage" Text="{Binding Path=Message, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="25" Background="#FF2876E6" Foreground="#FFE89F55"/>
+        <TextBox x:Name="txtbProposition" Text="{Binding Path=Proposition, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="25" Background="#FF2876E6" Foreground="#FFE89F55" KeyDown="txtbProposition_KeyDown"/>
+        <Button Content="Proposition" Command="{Binding CommandeProposition}" HorizontalAlignment="Left" Margin="119,414,0,0" VerticalAlignment="Top" Width="106" Height="30" Background="#FF2876E6" Foreground="#FFE89F55"/>
+        <Button Content="Nouveau" Command="{Binding CommandeNouveau}" HorizontalAlignment="Left" Margin="297,414,0,0" VerticalAlignment="Top" Width="108" Height="30" Background="#FF2876E6" Foreground="#FFE89F55"/>
+
+    </Grid>
+</Window>
