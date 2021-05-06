@@ -8,7 +8,7 @@
     "net5.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\TPCDA\\.nuget\\packages\\": {},
+    "C:\\Users\\Virus\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
@@ -16,11 +16,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\TPCDA\\Desktop\\olivier\\csharp\\visual 2019\\WPF\\Evaluation 2\\Couvez olivier\\exercice2\\bindingDevin\\bindingDevin.csproj",
+      "projectUniqueName": "C:\\Users\\Virus\\Documents\\Stage TP CDA\\csharp\\csharp 2019\\WPF\\eval2\\Eval2\\Couvez olivier\\exercice2\\bindingDevin\\bindingDevin.csproj",
       "projectName": "bindingDevin",
-      "projectPath": "C:\\Users\\TPCDA\\Desktop\\olivier\\csharp\\visual 2019\\WPF\\Evaluation 2\\Couvez olivier\\exercice2\\bindingDevin\\bindingDevin.csproj",
-      "packagesPath": "C:\\Users\\TPCDA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\TPCDA\\Desktop\\olivier\\csharp\\visual 2019\\WPF\\Evaluation 2\\Couvez olivier\\exercice2\\bindingDevin\\obj\\",
+      "projectPath": "C:\\Users\\Virus\\Documents\\Stage TP CDA\\csharp\\csharp 2019\\WPF\\eval2\\Eval2\\Couvez olivier\\exercice2\\bindingDevin\\bindingDevin.csproj",
+      "packagesPath": "C:\\Users\\Virus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Virus\\Documents\\Stage TP CDA\\csharp\\csharp 2019\\WPF\\eval2\\Eval2\\Couvez olivier\\exercice2\\bindingDevin\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -28,7 +28,7 @@
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\TPCDA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Virus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"

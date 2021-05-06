@@ -38,10 +38,10 @@ namespace bindingDevin
         public string Plage { get { return plage; } set { plage = value; OnPropertyChanged("Plage"); } }
 
         private string proposition;
-        public string Proposition { get { return proposition; } set { proposition = value; } }
+        public string Proposition { get { return proposition; } set { proposition = value; OnPropertyChanged("Proposition"); } }
 
         private string message;
-        public string Message { get { return message; } set { message = value; } }
+        public string Message { get { return message; } set { message = value; OnPropertyChanged("Message"); } }
 
         public ICommand CommandeProposition { get; set; }
         public ICommand CommandeNouveau { get; set; }
@@ -55,6 +55,9 @@ namespace bindingDevin
             CommandeProposition = new Command(CommandePropositionAction);
             CommandeNouveau = new Command(CommandeNouveauAction);
             nbAChercher = NbAlea(ref minNb, ref maxNb);
+            NbEssai = Convert.ToString( Nb_EssaiJeu);
+            Plage = Convert.ToString(PlageJeu);
+            Message = "Choisissez votre nombre d'essais et la plage de jeu";
         }
 
         private void JeuDuDevin_Loaded(object sender, RoutedEventArgs e)
@@ -68,6 +71,8 @@ namespace bindingDevin
         {
             if (PropertyChanged != null)
             {
+                PropertyChanged(this, new PropertyChangedEventArgs(v));
+
                 if (v == "NbEssai")
                 {
                     Nb_EssaiJeu = Convert.ToInt16(NbEssai);
@@ -82,7 +87,7 @@ namespace bindingDevin
 
             
         }
-        private void CommandePropositionAction(object parametre)
+        public void CommandePropositionAction(object parametre)
         {
             if (nbEssaisReste != 0)
             {
@@ -114,8 +119,8 @@ namespace bindingDevin
                     }
                 }
 
-                Proposition = "0";
-
+                Proposition = "";
+                txtbProposition.Focus();
                 nbEssaisReste = nbEssaisReste - 1;
             }
             if (nbEssaisReste == 0)
@@ -126,7 +131,7 @@ namespace bindingDevin
 
         }
 
-        private void CommandeNouveauAction(object parametre)
+        public void CommandeNouveauAction(object parametre)
         {
             Message = "";
 
@@ -151,7 +156,7 @@ namespace bindingDevin
 
 
 
-        private void txtbProposition_KeyDown(object sender, KeyEventArgs e)
+        public void txtbProposition_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
@@ -188,8 +193,8 @@ namespace bindingDevin
                                 }
                             }
 
-                            Proposition = "0";
-
+                            Proposition = "";
+                            txtbProposition.Focus();
                             nbEssaisReste = nbEssaisReste - 1;
                         }
                         if (nbEssaisReste == 0)
