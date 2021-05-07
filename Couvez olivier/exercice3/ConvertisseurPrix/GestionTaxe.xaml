@@ -1,0 +1,16 @@
+﻿<Window x:Name="GestTaxe" x:Class="ConvertisseurPrix.GestionTaxe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConvertisseurPrix"
+        mc:Ignorable="d"
+        Title="Gestion de la taxe" Height="300" Width="300" Background="#FF2D2D30">
+    <Grid>
+        <Label Content="Label" HorizontalAlignment="Center" Margin="0,79,0,0" VerticalAlignment="Top" Height="5" Background="#FF18B9C1" Width="280"/>
+        <Label x:Name="lblPrixTtc" Content="Taux de taxe" HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top" Foreground="#FFB2AAAA" FontWeight="Bold"/>
+        <TextBox x:Name="txtbTaxe" Text="{Binding TauxTaxe, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="94,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="30" KeyDown="txtbTaxe_KeyDown"/>
+        <Label x:Name="lblTitre" Content="Reglage du taux de taxe" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" Foreground="#FFB2AAAA" FontSize="20" FontFamily="Century Gothic" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
