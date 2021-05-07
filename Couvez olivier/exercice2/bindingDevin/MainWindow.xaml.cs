@@ -23,7 +23,7 @@ namespace bindingDevin
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         int Nb_EssaiJeu = 10;
-        int PlageJeu = 1000;
+        Int32 PlageJeu = 1000;
         private int nbEssaisReste = 10;
         private bool jeuEnCours = false;
         private Int32 nbAChercher = 0;
@@ -55,9 +55,10 @@ namespace bindingDevin
             CommandeProposition = new Command(CommandePropositionAction);
             CommandeNouveau = new Command(CommandeNouveauAction);
             nbAChercher = NbAlea(ref minNb, ref maxNb);
-            NbEssai = Convert.ToString( Nb_EssaiJeu);
+            NbEssai = Convert.ToString(Nb_EssaiJeu);
             Plage = Convert.ToString(PlageJeu);
             Message = "Choisissez votre nombre d'essais et la plage de jeu";
+            txtbProposition.IsEnabled = false;
         }
 
         private void JeuDuDevin_Loaded(object sender, RoutedEventArgs e)
@@ -75,17 +76,42 @@ namespace bindingDevin
 
                 if (v == "NbEssai")
                 {
-                    Nb_EssaiJeu = Convert.ToInt16(NbEssai);
-                    nbEssaisReste = Convert.ToInt16(NbEssai);
+                    if (NbEssai != "")
+                    {
+                        if ((Convert.ToInt16(NbEssai) < 10) || (Convert.ToInt16(NbEssai) > 30))
+                        {
+                            MessageBox.Show("La nombre d'essais d'oit être compris entre 10 et 30");
+                            Nb_EssaiJeu = 10;
+                            nbEssaisReste = 10;
+                        }
+                        else
+                        {
+                            Nb_EssaiJeu = Convert.ToInt16(NbEssai);
+                            nbEssaisReste = Convert.ToInt16(NbEssai);
+                        }
+                    }
                 }
 
                 if (v == "Plage")
                 {
-                    PlageJeu = Convert.ToInt16(Plage);
-                }            
+                    if (Plage != "")
+                    {
+                        if ((Convert.ToInt16(Plage) < 1000) || (Convert.ToInt32(Plage) > 100000))
+                        {
+                            MessageBox.Show("La nombre d'essais d'oit être compris entre 1000 et 100000");
+                            Nb_EssaiJeu = 1000;
+                            nbEssaisReste = 1000;
+                        }
+                        else
+                        {
+                            PlageJeu = Convert.ToInt16(Plage);
+                            maxNb = Convert.ToInt16(Plage);
+                        }
+                    }
+                }
             }
 
-            
+
         }
         public void CommandePropositionAction(object parametre)
         {
@@ -113,7 +139,9 @@ namespace bindingDevin
                     {
                         MessageBox.Show("BRAVO, vous avez trouvé le nombre mystère !");
                         jeuEnCours = false;
-
+                        txtbProposition.IsEnabled = false;
+                        txtbEssai.IsEnabled = true;
+                        txtbPlage.IsEnabled = true;
                         nbEssaisReste = 0;
 
                     }
@@ -126,6 +154,9 @@ namespace bindingDevin
             if (nbEssaisReste == 0)
             {
                 MessageBox.Show("Désolé, vous n'avez trouvé le nombre mystère ! c'était le chiffe " + nbAChercher);
+                txtbProposition.IsEnabled = false;
+                txtbEssai.IsEnabled = true;
+                txtbPlage.IsEnabled = true;
                 jeuEnCours = false;
             }
 
@@ -144,13 +175,15 @@ namespace bindingDevin
 
             // Affichage du message de début de jeu
 
-           Message = "Choisissez votre nombre d'essais";
+            Message = "Choisissez votre nombre d'essais";
+            txtbProposition.IsEnabled = true;
+            txtbEssai.IsEnabled = false;
+            txtbPlage.IsEnabled = false;
         }
 
         static int NbAlea(ref int minAlea, ref int maxAlea)
         {
             Random aleat = new Random();
-
             return aleat.Next(minAlea, maxAlea);
         }
 
@@ -163,45 +196,50 @@ namespace bindingDevin
                 if (e.Key == Key.Return)
                 {
 
-                        if (nbEssaisReste != 0)
+                    if (nbEssaisReste != 0)
+                    {
+                        // A mettre au premier essais !
+
+                        if (nbEssaisReste == Convert.ToInt16(NbEssai))
                         {
-                            // A mettre au premier essais !
+                            jeuEnCours = true;
+                        }
 
-                            if (nbEssaisReste == Convert.ToInt16(NbEssai))
+
+                        if (Convert.ToInt32(Proposition) > nbAChercher)
+                        {
+                            Message = "le nombre à trouver est plus petit";
+                        }
+                        else
+                        {
+                            if (Convert.ToInt32(Proposition) < nbAChercher)
                             {
-                                jeuEnCours = true;
-                            }
-
-
-                            if (Convert.ToInt32(Proposition) > nbAChercher)
-                            {
-                                Message = "le nombre à trouver est plus petit";
+                                Message = "le nombre à trouver est plus grand";
                             }
                             else
                             {
-                                if (Convert.ToInt32(Proposition) < nbAChercher)
-                                {
-                                    Message = "le nombre à trouver est plus grand";
-                                }
-                                else
-                                {
-                                    MessageBox.Show("BRAVO, vous avez trouvé le nombre mystère !");
-                                    jeuEnCours = false;
+                                MessageBox.Show("BRAVO, vous avez trouvé le nombre mystère !");
+                                txtbProposition.IsEnabled = false;
+                                txtbEssai.IsEnabled = true;
+                                txtbPlage.IsEnabled = true;
+                                jeuEnCours = false;
+                                nbEssaisReste = 0;
 
-                                    nbEssaisReste = 0;
-
-                                }
                             }
+                        }
 
-                            Proposition = "";
-                            txtbProposition.Focus();
-                            nbEssaisReste = nbEssaisReste - 1;
-                        }
-                        if (nbEssaisReste == 0)
-                        {
-                            MessageBox.Show("Désolé, vous n'avez trouvé le nombre mystère ! c'était le chiffe " + nbAChercher);
-                            jeuEnCours = false;
-                        }
+                        Proposition = "";
+                        txtbProposition.Focus();
+                        nbEssaisReste = nbEssaisReste - 1;
+                    }
+                    if (nbEssaisReste == 0)
+                    {
+                        MessageBox.Show("Désolé, vous n'avez trouvé le nombre mystère ! c'était le chiffe " + nbAChercher);
+                        txtbProposition.IsEnabled = false;
+                        txtbEssai.IsEnabled = true;
+                        txtbPlage.IsEnabled = true;
+                        jeuEnCours = false;
+                    }
                 }
             }
             catch
